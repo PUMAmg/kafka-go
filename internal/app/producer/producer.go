@@ -7,17 +7,9 @@ import (
 	"kafka-go/internal/infrastructure/logger"
 	"kafka-go/internal/kafka"
 	"kafka-go/internal/service"
-
-	"go.uber.org/zap"
 )
 
 const appName = "kafka-producer"
-
-type App struct {
-	log     *zap.SugaredLogger
-	cfg     config.Config
-	service *service.MessageService
-}
 
 func Run(ctx context.Context, cfg config.Config) error {
 	const op = "producer.Run"

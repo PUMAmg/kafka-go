@@ -30,7 +30,7 @@ func (s *MessageService) SendMessage(ctx context.Context) error {
 
 	log := logger.FromContext(ctx)
 
-	for i := 0; i < 5; i++ {
+	for i := 0; i < 100; i++ {
 		select {
 		case <-ctx.Done():
 			return nil

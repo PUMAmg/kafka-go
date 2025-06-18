@@ -6,7 +6,7 @@ import (
 	"os/signal"
 	"syscall"
 
-	"kafka-go/internal/app/producer"
+	"kafka-go/internal/app/consumer"
 	"kafka-go/internal/config"
 	"kafka-go/internal/infrastructure/logger"
 )
@@ -28,9 +28,9 @@ func main() {
 	signal.Notify(sigChan, syscall.SIGINT, syscall.SIGTERM)
 
 	go func() {
-		err := producer.Run(ctx, *cfg)
+		err := consumer.Run(ctx, *cfg)
 		if err != nil {
-			log.Errorw("failed to run producer", "error", err)
+			log.Errorw("failed to run consumer", "error", err)
 			sigChan <- syscall.SIGTERM
 		}
 	}()
